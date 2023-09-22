@@ -91,7 +91,9 @@ const CardEdit = ({ cardData }: CardEditProps) => {
           </div>
         </div>
         <div className={classes.centerArea}>
-          <div className={classes.title}>
+          <div
+            className={`${classes.title} ${newTitle === "" && classes.invalid}`}
+          >
             <textarea
               // ref={titleRef}
               placeholder="제목을 입력해주세요."
@@ -103,10 +105,14 @@ const CardEdit = ({ cardData }: CardEditProps) => {
           </div>
         </div>
         <div className={classes.bottomArea}>
-          <div className={classes.position}>
+          <div
+            className={`${classes.position} ${
+              position === "포지션" && classes.invalid
+            }`}
+          >
             <input
               type="text"
-              placeholder="지원 포지션"
+              placeholder="포지션을 선택해 주세요."
               value={position === "포지션" ? "" : position}
               readOnly
             />
@@ -114,7 +120,7 @@ const CardEdit = ({ cardData }: CardEditProps) => {
 
           {selectedTechNames.length === 0 ? (
             <div className={`${classes.techTags} ${classes.invalid}`}>
-              프로젝트에서 사용할 기술 스택을 선택해 주세요!
+              기술 스택을 선택해 주세요.
             </div>
           ) : (
             <Swiper
@@ -144,6 +150,11 @@ const CardEdit = ({ cardData }: CardEditProps) => {
               keywords.length === 0 && classes.invalid
             }`}
           >
+            {keywords.length === 0 && (
+              <span className={classes.invalidText}>
+                하나 이상의 키워드를 추가해 주세요.
+              </span>
+            )}
             {keywords.map(item => (
               <span key={item}>&nbsp;#{item}</span>
             ))}
