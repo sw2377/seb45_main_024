@@ -153,6 +153,7 @@
 
   /* image 임시 CSS */
   & .userImage {
+    overflow: hidden;
     width: 85px;
     height: 85px;
     margin: 0 auto;
