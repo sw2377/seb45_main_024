@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import commonInstance from "../../utility/commonInstance";
+import commonInstance from "../../utils/commonInstance";
 import {
   saveTokensToLocalStorage,
   getTokensFromLocalStorage,
   saveRefreshTokenToLocalStorage,
-} from "../../utility/tokenStorage";
+} from "../../utils/tokenStorage";
 
 interface LoginData {
   email: string;

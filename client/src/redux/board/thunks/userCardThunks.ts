@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import commonInstance from "../../../utility/commonInstance";
-import authInstance from "../../../utility/authInstance";
+import commonInstance from "../../../utils/commonInstance";
+import authInstance from "../../../utils/authInstance";
 import { UserListDataType } from "../../../model/boardTypes";
 
 interface reqDataType {
@@ -11,8 +11,8 @@ interface reqDataType {
 }
 
 interface editCardParamsType {
-  targetId: string;
-  data: reqDataType;
+  targetId?: number;
+  reqData: reqDataType;
 }
 
 interface QueryParamsType {
@@ -67,8 +67,11 @@ const addUserCard = createAsyncThunk(
 /** PATCH 카드 수정 */
 const editUserCard = createAsyncThunk(
   "usercard/edit",
-  async ({ targetId, data }: editCardParamsType) => {
-    const response = await authInstance.patch(`teamboards/${targetId}`, data);
+  async ({ targetId, reqData }: editCardParamsType) => {
+    const response = await authInstance.patch(
+      `teamboards/${targetId}`,
+      reqData,
+    );
 
     return response.data;
   },

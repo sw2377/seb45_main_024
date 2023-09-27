@@ -5,7 +5,7 @@ import classes from "./Summary.module.css";
 import SideMenu from "../../components/mypage/Sidemenu";
 import NoContent from "../../components/mypage/view/NoContent";
 import Card from "../../components/userlist,projectlist/card/Card";
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 import { useFetchProfile } from "../../components/mypage/useFetchProfile";
 
 const Summary: FC = () => {

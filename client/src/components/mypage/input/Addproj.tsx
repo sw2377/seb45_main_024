@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import classes from "./Addproj.module.css";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 
 interface AddprojProps {
   projectName: string;
@@ -92,7 +92,7 @@ const Addproj: FC<AddprojProps> = ({
           type="text"
           value={projectName}
           placeholder="이름을 입력해주세요"
-          onChange={(e) => setProjectName(e.target.value)}
+          onChange={e => setProjectName(e.target.value)}
         />
       </div>
       <div className={classes.formGroup}>
@@ -107,7 +107,7 @@ const Addproj: FC<AddprojProps> = ({
           id="projectLink"
           type="url"
           value={projectLink}
-          onChange={(e) => setProjectLink(e.target.value)}
+          onChange={e => setProjectLink(e.target.value)}
         />
       </div>
       <div className={classes.formGroup}>
@@ -121,7 +121,7 @@ const Addproj: FC<AddprojProps> = ({
           className={classes.formInput}
           id="projectImage"
           type="file"
-          onChange={(e) => fileInputChangedHandler(e)}
+          onChange={e => fileInputChangedHandler(e)}
         />
       </div>
       <div className={classes.actions}>

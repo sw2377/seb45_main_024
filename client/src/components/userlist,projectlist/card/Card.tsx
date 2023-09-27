@@ -1,14 +1,12 @@
 import CardEdit from "./CardEdit";
 import CardView from "./CardView";
 import {
+  CardType,
+  CardDataType,
   UserListDataType,
-  ProjectListDataType,
 } from "../../../model/boardTypes";
 
 import classes from "./CardStyle.module.css";
-
-type CardType = "USER_CARD" | "PROJECT_CARD";
-type CardDataType = UserListDataType | ProjectListDataType;
 
 interface CardProps {
   type: CardType;

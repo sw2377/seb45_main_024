@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import Tag from "./Tag";
 import classes from "./TechTags.module.css";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 
 export type TechTagType = {
   id: number;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./findPassword.module.css";
 import { validationActions } from "../../redux/auth/validationSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import commonInstance from "../../utility/commonInstance";
+import commonInstance from "../../utils/commonInstance";
 import { setLoading } from "../../redux/common/loadingSlice";
 import Loading from "../common/Loading";
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { UserListDataType } from "../../../model/boardTypes";
-import { getStringDate } from "../../../utility/formatDate";
+import { getStringDate } from "../../../utils/formatDate";
 import { useAppDispatch } from "../../../redux/hooks";
 import { getNewTitle } from "../../../redux/store";
-import { getTokensFromLocalStorage } from "../../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../../utils/tokenStorage";
 import GetLogo from "../../mypage/format/GetLogo";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -38,15 +38,21 @@ const CardEdit = ({ cardData }: CardEditProps) => {
   // console.log("techTagData", techTagData);
 
   const { title, position, keywords, createdAt, techTagList } = cardData;
-  // console.log("✅ CARD DATA", cardData); // 생성일 경우 빈값이 든게 오고, 수정일 경우 origin 데이터가 든게 옴
+  console.log("CardEdit:: cardData", cardData);
+
+  useEffect(() => {
+    // console.log("✅ CARD DATA", cardData); // 생성일 경우 빈값이 든게 오고, 수정일 경우 origin 데이터가 든게 옴
+  }, []);
 
   useEffect(() => {
     // console.log("프로젝트에서 사용할 기술스택 변경");
   }, [techTagList]);
 
-  const [newTitle, setNewTitle] = useState("");
+  const [newTitle, setNewTitle] = useState(title);
   const date = getStringDate(createdAt);
   // const date = createdAt;
+
+  console.log("newTitle", newTitle);
 
   useEffect(() => {
     setNewTitle(title);
@@ -92,7 +98,9 @@ const CardEdit = ({ cardData }: CardEditProps) => {
         </div>
         <div className={classes.centerArea}>
           <div
-            className={`${classes.title} ${newTitle === "" && classes.invalid}`}
+            className={`${classes.title} ${
+              (newTitle === "" || newTitle === undefined) && classes.invalid
+            }`}
           >
             <textarea
               // ref={titleRef}

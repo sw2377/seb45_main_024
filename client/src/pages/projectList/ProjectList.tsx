@@ -7,7 +7,7 @@ import Selectbox from "../../components/userlist,projectlist/Selectbox";
 import Pagination from "../../components/userlist,projectlist/Pagination";
 import Card from "../../components/userlist,projectlist/card/Card";
 import Checkbox from "../../components/userlist,projectlist/Checkbox";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 import { fetchProjectList } from "../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";

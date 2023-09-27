@@ -7,14 +7,14 @@ import { ReactComponent as CheckSvg } from "../../assets/icons/check.svg";
 import Checkbox from "../../components/userlist,projectlist/Checkbox";
 import ActionButton from "../../components/userlist,projectlist/ActionButton";
 import Tooltip from "../../components/userlist,projectlist/Tooltip";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 import { addComment, editComment, removeComment } from "../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 import classes from "./DetailComments.module.css";
 
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 
 interface AccessTokenType {
   id: number;

@@ -4,7 +4,7 @@ import alarmBell from "../../../assets/icons/alarmBell.svg";
 import classes from "./Alarm.module.css";
 import AlarmItem from "./AlarmItem";
 // import profile from "../../assets/images/default_profile.svg";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 import useInterval from "../../../hooks/useInterval";
 
 interface AlarmItemProps {

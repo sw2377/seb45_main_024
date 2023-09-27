@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import commonInstance from "../../../utility/commonInstance";
-import authInstance from "../../../utility/authInstance";
+import commonInstance from "../../../utils/commonInstance";
+import authInstance from "../../../utils/authInstance";
 import { ProjectListDataType } from "../../../model/boardTypes";
 
 interface reqDataType {

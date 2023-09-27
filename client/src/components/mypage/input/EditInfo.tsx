@@ -3,8 +3,8 @@ import classes from "./EditInfo.module.css";
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../../redux/hooks";
 import { validationActions } from "../../../redux/auth/validationSlice";
-import authInstance from "../../../utility/authInstance";
-import { removeTokensFromLocalStorage } from "../../../utility/tokenStorage";
+import authInstance from "../../../utils/authInstance";
+import { removeTokensFromLocalStorage } from "../../../utils/tokenStorage";
 import view from "../../../assets/icons/view.svg";
 import viewOff from "../../../assets/icons/viewOff.svg";
 

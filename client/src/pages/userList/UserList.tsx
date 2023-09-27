@@ -6,7 +6,7 @@ import SearchInput from "../../components/userlist,projectlist/SearchInput";
 import Selectbox from "../../components/userlist,projectlist/Selectbox";
 import Pagination from "../../components/userlist,projectlist/Pagination";
 import Card from "../../components/userlist,projectlist/card/Card";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 import { fetchUserCardList } from "../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -88,7 +88,7 @@ const UserList = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const handleChangePage = page => {
+  const handleChangePage = (page: string) => {
     query.set("page", page);
     setQuery(query);
   };
