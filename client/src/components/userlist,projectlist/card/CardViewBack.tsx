@@ -15,7 +15,7 @@ const CardViewBack = ({ cardData }: cardViewBackProps) => {
     cardData;
   const navigate = useNavigate();
 
-  const tokenId = getTokenInfo();
+  const { tokenId } = getTokenInfo();
 
   const goToUserMyPage = () => {
     if (tokenId) {

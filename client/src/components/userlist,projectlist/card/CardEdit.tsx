@@ -35,7 +35,7 @@ const CardEdit = ({ cardData }: CardEditProps) => {
 
   const dispatch = useAppDispatch();
   const techTagData = useAppSelector(state => state.techTags.data);
-  // console.log("techTagData", techTagData);
+  console.log("techTagData", techTagData);
 
   const { title, position, keywords, createdAt, techTagList } = cardData;
   console.log("CardEdit:: cardData", cardData);

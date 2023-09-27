@@ -46,8 +46,8 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
     setNewTitle(editTitle);
   }, [editTitle]);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<null | string>(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState<null | string>(null);
 
   // 나의 기술스택 조회
   const token = getTokensFromLocalStorage() as AccessTokenType;
@@ -203,8 +203,8 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
       )
     ) {
       if (!originCard) {
-        setIsLoading(true);
-        setError(null);
+        // setIsLoading(true);
+        // setError(null);
 
         dispatch(addUserCard(reqData))
           .unwrap()
@@ -214,15 +214,15 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
             navigate("/userlist");
           })
           .catch(error => {
-            // console.warn("🚀 CREATE 실패", error, reqData);
-            setError("Something went wrong");
-          })
-          .finally(() => setIsLoading(false));
+            console.warn("🚀 CREATE 실패", error, reqData);
+            // setError("Something went wrong");
+          });
+        // .finally(() => setIsLoading(false));
       }
 
       if (originCard) {
-        setIsLoading(true);
-        setError(null);
+        // setIsLoading(true);
+        // setError(null);
 
         const targetId = originCard?.teamBoardId;
 
@@ -235,7 +235,7 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
           })
           .catch(error => {
             alert("제목을 수정해주세요!");
-            // console.warn("🚀 EDIT 실패", error, reqData);
+            console.warn("🚀 EDIT 실패", error, reqData);
           });
       }
     }
