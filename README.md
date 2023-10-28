@@ -1,7 +1,7 @@
 <br />
 
 <div  align="center">
-  <img width="100%" src="https://github.com/codestates-seb/seb45_main_024/assets/85465266/4031b821-ac2e-403f-aa74-e293b092703b" alt="stackoverflow">
+  <img width="100%" src="https://github.com/codestates-seb/seb45_main_024/assets/85465266/4031b821-ac2e-403f-aa74-e293b092703b" alt="smoothie">
 </div>
 
 <br />
@@ -46,6 +46,17 @@
 | Java | mySQL | Spring | Spring<br>Boot | JWT|Spring<br/>Security | AWS |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="spring logo" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" height="50" width="50" > | <img alt="spring-boot logo" src="https://t1.daumcdn.net/cfile/tistory/27034D4F58E660F616" width="65" height="65" > | <img alt="spring-boot logo" src="https://play-lh.googleusercontent.com/3C-hB-KWoyWzZjUnRsXUPu-bqB3HUHARMLjUe9OmPoHa6dQdtJNW30VrvwQ1m7Pln3A" width="65" height="65" >| <img alt="spring-boot logo" src="https://blog.kakaocdn.net/dn/dIQDQP/btqZ09ESd8T/0ibqtotW52OaJS8HznXDQK/img.png" width="65" height="65" > | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /></div> | 
+
+<br />
+
+## ✨ Pages & Features
+|메인 페이지|로그인 / 회원가입 페이지|
+|:---:|:---:|
+|<img width="100%" alt="메인페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/main.gif" />|<img width="100%" alt="로그인,회원가입 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/account.gif" />|
+|**Find Mate 카드 리스트**|**Find Team 카드 작성**|
+|<img width="100%" alt="Find Mate 카드리스트 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findmate-cardlist.gif" />|<img width="100%" alt="Find Team 카드작성 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findteam-create.gif" />|
+|**Find Mate 댓글 알람**|**마이페이지**|
+|<img width="100%" alt="Find Mate 댓글 알람 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findmate-comment.gif" />|<img width="100%" alt="마이페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/mypage.gif" />|
 
 <br />
 
