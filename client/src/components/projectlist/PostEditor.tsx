@@ -9,8 +9,8 @@ import SelectBox from "../userlist,projectlist/Selectbox";
 import Tag from "../userlist,projectlist/Tag";
 import GetLogo from "../mypage/format/GetLogo";
 
-import { sliceISOString, requestFormatDate } from "../../utility/formatDate";
-import { extractTextAfterColon } from "../../utility/exceptColonFromTechResponse";
+import { sliceISOString, requestFormatDate } from "../../utils/formatDate";
+import { extractTextAfterColon } from "../../utils/exceptColonFromTechResponse";
 
 import { ProjectListDataType } from "../../model/boardTypes";
 

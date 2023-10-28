@@ -3,7 +3,7 @@ import classes from "./HeaderRightMenu.module.css";
 // import { useAppSelector } from "../../../redux/hooks";
 import { useNavigate } from "react-router-dom";
 import Alarm from "../Alarm/Alarm";
-import { getTokensFromLocalStorage } from "../../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../../utils/tokenStorage";
 import Logout from "../../login/Logout";
 import MyProfile from "../MyProfile";
 
@@ -34,7 +34,7 @@ const HeaderRight: FC = () => {
     <div className={classes.right}>
       {isLoggedIn ? (
         <>
-          <Alarm />
+          {/* <Alarm /> */}
           <div className={classes.profile}>
             <div>
               <MyProfile />

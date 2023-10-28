@@ -5,7 +5,7 @@ import { validationActions } from "../../redux/auth/validationSlice"; // 프론�
 import { loginUser } from "../../redux/auth/loginSlice"; // 로그인폼 서버 제출 슬라이스
 import { setAlertMessage } from "../../redux/common/alertSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 import Loading from "../common/Loading";
 
 // response.data? response.payload?

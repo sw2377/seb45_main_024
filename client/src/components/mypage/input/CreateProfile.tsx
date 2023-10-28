@@ -13,7 +13,7 @@ import { useAppSelector } from "../../../redux/hooks";
 import { useParams } from "react-router-dom";
 import { ProfileState } from "../../../redux/mypage/profileSlice";
 import { TechTagType } from "../tag/TechTags";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 
 interface ProfileFormData {
   accountId: number;
@@ -32,7 +32,7 @@ const WARNING = "주의: 이미 생성된 태그를 클릭하면 태그가 삭�
 const CreateProfile: FC<Props> = ({ setProfileFormData }) => {
   const { id } = useParams<{ id: string }>();
   const { profileData } = useAppSelector(
-    (state: { profile: ProfileState }) => state.profile
+    (state: { profile: ProfileState }) => state.profile,
   );
   const [editorValue, setEditorValue] = useState<string>("");
   const [projectName, setProjectName] = useState<string>("");
@@ -62,27 +62,27 @@ const CreateProfile: FC<Props> = ({ setProfileFormData }) => {
       if (profileData.coverLetter) {
         setEditorValue(profileData.coverLetter);
       }
-      setSoftTags((prevSoftTags) =>
+      setSoftTags(prevSoftTags =>
         profileData.softSkills
           ? [...new Set([...prevSoftTags, ...profileData.softSkills])]
-          : prevSoftTags
+          : prevSoftTags,
       );
-      setHardTags((prevHardTags) =>
+      setHardTags(prevHardTags =>
         profileData.hardSkills
           ? [...new Set([...prevHardTags, ...profileData.hardSkills])]
-          : prevHardTags
+          : prevHardTags,
       );
-      setProjTags((prevProjectTags) =>
+      setProjTags(prevProjectTags =>
         profileData.projectDetails
           ? [
               ...new Set([
                 ...prevProjectTags,
                 ...profileData.projectDetails.map(
-                  (project: any) => project.projectTitle
+                  (project: any) => project.projectTitle,
                 ),
               ]),
             ]
-          : prevProjectTags
+          : prevProjectTags,
       );
     }
   }, [profileData]);
@@ -90,7 +90,7 @@ const CreateProfile: FC<Props> = ({ setProfileFormData }) => {
   // 기술 스택 초기값 설정
   useEffect(() => {
     if (profileData?.techTags) {
-      const techTagIds = profileData.techTags.map((tag) => tag.id);
+      const techTagIds = profileData.techTags.map(tag => tag.id);
       setSelectedTechs(techTagIds);
       console.log(techTagIds);
       console.log(selectedTechs);
@@ -134,13 +134,13 @@ const CreateProfile: FC<Props> = ({ setProfileFormData }) => {
   };
 
   const projTagDeleteHandler = async (id: number) => {
-    const project = projSet.find((proj) => proj.projectId === id);
+    const project = projSet.find(proj => proj.projectId === id);
     if (project) {
       try {
         await authInstance.delete(
-          `/mypages/profile/projectDetails/${project.projectId}`
+          `/mypages/profile/projectDetails/${project.projectId}`,
         );
-        const updatedTags = projSet.filter((proj) => proj.projectId !== id);
+        const updatedTags = projSet.filter(proj => proj.projectId !== id);
         setProjSet(updatedTags);
       } catch (err) {
         console.info("Error deleting project", err);
@@ -160,11 +160,11 @@ const CreateProfile: FC<Props> = ({ setProfileFormData }) => {
   }, []);
 
   const handleTagClick = (id: number, isActive: boolean) => {
-    setSelectedTechs((prevSelectedTechs) => {
+    setSelectedTechs(prevSelectedTechs => {
       if (isActive) {
         return [...prevSelectedTechs, id];
       } else {
-        return prevSelectedTechs.filter((techId) => techId !== id);
+        return prevSelectedTechs.filter(techId => techId !== id);
       }
     });
   };

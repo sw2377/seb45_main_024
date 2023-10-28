@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as EditSvg } from "../../assets/icons/edit.svg";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
-import { getStringDate } from "../../utility/formatDate";
-import { extractTextAfterColon } from "../../utility/exceptColonFromTechResponse";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
+import { getStringDate } from "../../utils/formatDate";
+import { extractTextAfterColon } from "../../utils/exceptColonFromTechResponse";
 
 import { getProject } from "../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";

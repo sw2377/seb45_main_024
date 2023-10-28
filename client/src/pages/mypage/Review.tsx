@@ -5,12 +5,12 @@ import AddReview from "../../components/mypage/input/AddReview";
 import ReviewCard from "../../components/mypage/view/ReviewCard";
 import SideMenu from "../../components/mypage/Sidemenu";
 import NoContent from "../../components/mypage/view/NoContent";
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 import { useAppSelector } from "../../redux/hooks";
 import { useFetchProfile } from "../../components/mypage/useFetchProfile";
 
 const Review: FC = () => {
-  const authorInfo = useAppSelector((state) => state.authorInfo);
+  const authorInfo = useAppSelector(state => state.authorInfo);
   const { id } = useParams<{ id: string }>();
   const [showAddReview, setShowAddReview] = useState<boolean>(false);
   const [reviewData, setReviewData] = useState<any>([]);

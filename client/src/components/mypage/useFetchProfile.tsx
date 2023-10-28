@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 import { setProfileData } from "../../redux/mypage/profileSlice";
 import { setAuthorInfo } from "../../redux/mypage/authorInfoSlice";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 interface AccessTokenType {
   imageUrl: string;

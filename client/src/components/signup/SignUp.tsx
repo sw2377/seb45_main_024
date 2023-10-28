@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import commonInstance from "../../utility/commonInstance";
+import commonInstance from "../../utils/commonInstance";
 import classes from "./SignUp.module.css";
 import { validationActions } from "../../redux/auth/validationSlice";
 // import { setAlertMessage } from "../../redux/utility/alertSlice";

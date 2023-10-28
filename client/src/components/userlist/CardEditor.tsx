@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Hashtag } from "../../assets/icons/hashtag.svg";
 import { UserListDataType } from "../../model/boardTypes";
 import Card from "../../components/userlist,projectlist/card/Card";
@@ -7,8 +7,9 @@ import ActionButton from "../../components/userlist,projectlist/ActionButton";
 import Selectbox from "../../components/userlist,projectlist/Selectbox";
 import SearchInput from "../../components/userlist,projectlist/SearchInput";
 import Tag from "../userlist,projectlist/Tag";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
-import { extractNumbersBeforeColon } from "../../utility/exceptColonFromTechResponse";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
+import { extractNumbersBeforeColon } from "../../utils/exceptColonFromTechResponse";
+import { TechTagTypes } from "../../model/techTagTypes";
 
 import { addUserCard } from "../../redux/store";
 import { editUserCard } from "../../redux/store";
@@ -17,14 +18,11 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import classes from "./CardEditor.module.css";
 
 // 임시
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 import dummyData from "../../dummy-data.json";
 import GetLogo from "../mypage/format/GetLogo";
 
-// type CardType = "NEW_CARD" | "EDIT_CARD";
-
 interface CardEditorProps {
-  // type?: CardType;
   originCard?: UserListDataType;
 }
 
@@ -32,32 +30,24 @@ interface AccessTokenType {
   id: number;
 }
 
-// 타입 따로 빼두기
-interface TechTagTypes {
-  id: number;
-  techName: string;
-  tagType: "BACK_END" | "FRONT_END" | "MOBILE" | "ETC";
-}
-
-// originCard가 있으면 EDIT_CARD, originCard가 없으면 NEW_CARD
+// originCard가 없으면 생성, originCard가 있으면 수정
 const CardEditor = ({ originCard }: CardEditorProps) => {
-  // console.log("✅ ORIGIN CARD", originCard);
-  // const NEW_CARD = type === "NEW_CARD";
-  // const EDIT_CARD = type === "EDIT_CARD";
+  console.log("✅ ORIGIN CARD", originCard);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const dispatch = useAppDispatch();
   const editTitle = useAppSelector(state => state.users.editTitle);
   const [newTitle, setNewTitle] = useState(editTitle);
 
+  // const [newTitle, setNewTitle] = useState(originCard?.title);
+
   useEffect(() => {
     setNewTitle(editTitle);
   }, [editTitle]);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<null | string>(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState<null | string>(null);
 
   // 나의 기술스택 조회
   const token = getTokensFromLocalStorage() as AccessTokenType;
@@ -91,14 +81,14 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
     }
   };
 
-  /** 포함되어야 할 정보 : 날짜, 제목, 포지션, 기술스택(일단제외), 태그 */
+  /** 포함되어야 할 정보 : 날짜, 제목, 포지션, 기술스택, 태그 */
   const [date, setDate] = useState(new Date().toLocaleDateString());
-  const [title, setTitle] = useState(originCard?.title);
+  const [title, setTitle] = useState("");
   const [position, setPosition] = useState("포지션");
 
-  const [techTags, setTechTags] = useState<number[]>([]);
+  const [techTagsId, setTechTagsId] = useState<number[]>([]);
 
-  // 지원포지션 예시
+  // 지원포지션
   const positionList = ["프론트엔드", "백엔드"];
 
   const handlePositionSelect = (selected: string) => {
@@ -109,16 +99,16 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
   const onSelectTechTags = (selectedId: number) => {
     // console.log(selectedId);
 
-    const isSelected = techTags.includes(selectedId);
+    const isSelected = techTagsId.includes(selectedId);
     // console.log("isSelected", isSelected);
 
     if (isSelected) {
       // 선택된 태그일 경우
-      const updatedTechTags = techTags.filter(id => id !== selectedId);
-      setTechTags(updatedTechTags);
+      const updatedTechTags = techTagsId.filter(id => id !== selectedId);
+      setTechTagsId(updatedTechTags);
     } else {
       // 선택되지 않은 태그일 경우
-      setTechTags(prev => [...prev, selectedId]);
+      setTechTagsId(prev => [...prev, selectedId]);
     }
   };
 
@@ -145,44 +135,47 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
     setKeywords(updatedKeyword);
   };
 
-  /** EDIT CARD인 경우 (카드 수정) */
+  /** EDIT CARD인 경우
+   *  originCard에서 title, position, keywords, techTagList를 가져옴
+   *  화면이 처음 렌더링될때, CardData를 세팅하고 Card 컴포넌트로 넘김
+   */
+
   useEffect(() => {
     if (originCard) {
-      // const techId = extractNumbersBeforeColon(originCard?.techTagList);
-
-      // console.log("EDIT CARD", originCard);
-
       setDate(originCard?.createdAt);
-      setTitle(originCard?.title);
-      // setTitle(newTitle);
+      setNewTitle(originCard?.title);
       setPosition(originCard?.position);
       setKeywords(originCard?.keywords);
-      setTechTags(extractNumbersBeforeColon(originCard?.techTagList));
+      setTechTagsId(extractNumbersBeforeColon(originCard?.techTagList));
+
+      // setTitle(newTitle);
     }
   }, [originCard]);
 
   // 수정일 경우 origin 데이터를 set하고, cardData를 props로 넘김
   // 생성일 경우 빈 값이 담긴 cardData를 card 컴포넌트로 넘김
-  const cardData = {
-    title: title,
+  const cardData: UserListDataType = {
+    title: newTitle,
     position: position,
     keywords: keywords,
     createdAt: date,
-    techTagList: techTags,
+    techTagList: techTagsId,
   };
 
-  const data = {
+  const reqData = {
     title: newTitle, // "제목형식string"
+    // title: title, // "제목형식string"
     position: position, // "포지션형식string"
     keywords: keywords, // ["키워드1", "키워드2"]
-    techTagIdList: techTags, // [1,3,5]
+    techTagIdList: techTagsId, // [1,3,5]
   };
 
+  // 모든 입력값에 대한 유효성 체크
   const checkValidData = () => {
-    const checkTitle = newTitle.trim().length === 0;
+    const checkTitle = newTitle?.trim().length === 0;
     const checkPosition = position.trim().length === 0 || position === "포지션";
     const checkKeywords = keywords.length === 0;
-    const checkTechTags = techTags.length === 0;
+    const checkTechTags = techTagsId.length === 0;
 
     if (checkTitle || checkPosition || checkKeywords || checkTechTags) {
       return false;
@@ -193,7 +186,8 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
 
   /* Creact or Edit Card */
   const handleSubmit = () => {
-    // console.log("🚀 CREATE/EDIT CARD", data);
+    console.log("🚀 CREATE/EDIT CARD", reqData);
+    console.log("🚀 EDITED_TITLE", newTitle);
 
     // 모든 필드가 채워진 상태일 경우에만 생성/수정 가능
     if (!checkValidData()) {
@@ -209,39 +203,39 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
       )
     ) {
       if (!originCard) {
-        setIsLoading(true);
-        setError(null);
+        // setIsLoading(true);
+        // setError(null);
 
-        dispatch(addUserCard(data))
+        dispatch(addUserCard(reqData))
           .unwrap()
           .then(() => {
-            // console.log("🚀 CREATE 성공", data);
+            // console.log("🚀 CREATE 성공", reqData);
             window.alert("새 글이 등록되었습니다.");
             navigate("/userlist");
           })
           .catch(error => {
-            // console.warn("🚀 CREATE 실패", error, data);
-            setError("Something went wrong");
-          })
-          .finally(() => setIsLoading(false));
+            console.warn("🚀 CREATE 실패", error, reqData);
+            // setError("Something went wrong");
+          });
+        // .finally(() => setIsLoading(false));
       }
 
       if (originCard) {
-        setIsLoading(true);
-        setError(null);
+        // setIsLoading(true);
+        // setError(null);
 
         const targetId = originCard?.teamBoardId;
 
-        dispatch(editUserCard({ targetId, data }))
+        dispatch(editUserCard({ targetId, reqData }))
           .unwrap()
           .then(() => {
-            // console.log("🚀 EDIT 성공", data);
+            // console.log("🚀 EDIT 성공", reqData);
             window.alert("카드가 수정되었습니다.");
             navigate("/userlist");
           })
           .catch(error => {
             alert("제목을 수정해주세요!");
-            // console.warn("🚀 EDIT 실패", error, data);
+            console.warn("🚀 EDIT 실패", error, reqData);
           });
       }
     }
@@ -269,6 +263,7 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
         <div className={classes.inputAreaBottom}>
           <section className={classes.techTagsSection}>
             <h2 className={classes.title}>프로젝트에서 사용할 기술 스택</h2>
+            {/* TODO:: 기술스택 변경 안내문구 */}
             <ul className={classes.techTags}>
               {myTechTags.length > 0 ? (
                 <>
@@ -277,7 +272,7 @@ const CardEditor = ({ originCard }: CardEditorProps) => {
                       key={techData.id}
                       onClick={() => onSelectTechTags(techData.id)}
                       className={
-                        techTags.includes(techData.id)
+                        techTagsId.includes(techData.id)
                           ? `${classes.selected}`
                           : ""
                       }

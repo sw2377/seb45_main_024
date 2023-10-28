@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as EditSvg } from "../../../assets/icons/edit.svg";
-import DefaultProfileImg from "../../../assets/images/default_profile.svg";
-import { getTokensFromLocalStorage } from "../../../utility/tokenStorage";
+
+import { getTokenInfo } from "../../../utils/getTokenInfo";
 import { UserListDataType } from "../../../model/boardTypes";
 
 import classes from "./CardStyle.module.css";
@@ -10,25 +10,15 @@ interface cardViewBackProps {
   cardData: UserListDataType;
 }
 
-interface AccessTokenType {
-  id: number;
-  imageUrl: string;
-}
-
 const CardViewBack = ({ cardData }: cardViewBackProps) => {
   const { teamBoardId, keywords, accountId, nickname, teamBoardImageUrl } =
     cardData;
   const navigate = useNavigate();
 
-  const token = getTokensFromLocalStorage() as AccessTokenType;
-  let tokenId;
-
-  if (token) {
-    tokenId = token.id;
-  }
+  const { tokenId } = getTokenInfo();
 
   const goToUserMyPage = () => {
-    if (token) {
+    if (tokenId) {
       navigate(`/mypage/${accountId}`);
     } else {
       alert("회원만 다른 유저의 프로필을 조회할 수 있어요!");
@@ -53,7 +43,6 @@ const CardViewBack = ({ cardData }: cardViewBackProps) => {
       <div className={classes.centerArea}>
         <div className={classes.userImage} onClick={goToUserMyPage}>
           <img src={teamBoardImageUrl} alt="" />
-          {/* <img src={token.imageUrl} alt="" /> */}
         </div>
         <div className={classes.keywordTag}>
           {keywords.map(item => (

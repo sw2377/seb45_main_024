@@ -8,7 +8,7 @@ import { ReactComponent as Text_H } from "../../assets/main/H.svg";
 import { ReactComponent as Text_I } from "../../assets/main/I.svg";
 import { ReactComponent as Text_E } from "../../assets/main/E.svg";
 
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 import classes from "./Main.module.css";
 

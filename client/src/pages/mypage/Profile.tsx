@@ -10,10 +10,10 @@ import ProjCard from "../../components/mypage/view/ProjCard";
 import SoftTag from "../../components/mypage/tag/SoftTag";
 import TechProfile from "../../components/mypage/view/TechProfile";
 import SideMenu from "../../components/mypage/Sidemenu";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setAuthorInfo } from "../../redux/mypage/authorInfoSlice";
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 import { setProfileData } from "../../redux/mypage/profileSlice";
 import { TechDesc } from "../../components/mypage/format/TechDesc";
 import GetLogo from "../../components/mypage/format/GetLogo";
@@ -32,7 +32,7 @@ const Profile: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>({});
-  const authorInfo = useAppSelector((state) => state.authorInfo);
+  const authorInfo = useAppSelector(state => state.authorInfo);
   const [isDelete, setIsDelete] = useState(false);
   const { id } = useParams<{ id: string }>();
   const AT = getTokensFromLocalStorage() as AccessTokenType;
@@ -71,7 +71,7 @@ const Profile: FC = () => {
             email: profile.email,
             nickname: profile.nickname,
             imgUrl: profile.imageUrl,
-          })
+          }),
         );
       } catch (err) {
         console.info("Error fetching profile data", err);

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import profile from "../../assets/images/default_profile.svg";
 import { useNavigate } from "react-router";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 import classes from "./MyProfile.module.css";
 
 const MyProfile: FC = () => {

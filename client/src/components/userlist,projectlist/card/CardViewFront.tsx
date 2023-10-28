@@ -2,7 +2,7 @@ import {
   UserListDataType,
   ProjectListDataType,
 } from "../../../model/boardTypes";
-import { extractTextAfterColon } from "../../../utility/exceptColonFromTechResponse";
+import { extractTextAfterColon } from "../../../utils/exceptColonFromTechResponse";
 import GetLogo from "../../mypage/format/GetLogo";
 
 import { Swiper, SwiperSlide } from "swiper/react";

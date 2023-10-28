@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 
 interface reqPostCommentsType {
   content: string;
@@ -9,12 +9,11 @@ interface reqPostCommentsType {
 
 interface reqEditCommentsType {
   content: string;
-  // acceptType: number;
 }
 
 export interface editCommentParamsType {
   targetId: number;
-  data: reqEditCommentsType[];
+  data: reqEditCommentsType;
 }
 
 /** GET 모든 댓글 조회 */

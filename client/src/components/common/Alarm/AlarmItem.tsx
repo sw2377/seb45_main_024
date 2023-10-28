@@ -2,7 +2,7 @@ import { FC } from "react";
 import profile from "../../../assets/images/default_profile.svg";
 import classes from "./AlarmItem.module.css";
 import { useNavigate } from "react-router-dom";
-import authInstance from "../../../utility/authInstance";
+import authInstance from "../../../utils/authInstance";
 
 interface AlarmItemProps {
   alarmId: number;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import commonInstance from "../../../utility/commonInstance";
+import commonInstance from "../../../utils/commonInstance";
 // import authInstance from "../../../utility/authInstance";
 
 /** GET 모든 기술태그 조회 */

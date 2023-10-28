@@ -5,19 +5,19 @@ import CardViewBack from "./CardViewBack";
 import classes from "./CardStyle.module.css";
 
 import {
+  CardType,
+  CardDataType,
   UserListDataType,
   ProjectListDataType,
 } from "../../../model/boardTypes";
 
-type CardDataType = UserListDataType | ProjectListDataType;
-
 interface CardViewProps {
-  type: "USER_CARD" | "PROJECT_CARD";
+  type: CardType;
   cardData: CardDataType;
 }
 
 const CardView = ({ type, cardData }: CardViewProps) => {
-  const isProjectCard = type === "PROJECT_CARD";
+  const isUserCard = type === "USER_CARD";
   const { memberBoardId } = cardData as ProjectListDataType;
 
   const navigate = useNavigate();
@@ -25,18 +25,14 @@ const CardView = ({ type, cardData }: CardViewProps) => {
   return (
     <div
       className={`${classes.card} ${
-        isProjectCard ? classes.project : classes.user
+        isUserCard ? classes.user : classes.project
       }`}
       onClick={
-        isProjectCard
-          ? () => navigate(`/projectlist/${memberBoardId}`)
-          : undefined
+        isUserCard ? undefined : () => navigate(`/projectlist/${memberBoardId}`)
       }
     >
       <CardViewFront type={type} cardData={cardData} />
-      {!isProjectCard && (
-        <CardViewBack cardData={cardData as UserListDataType} />
-      )}
+      {isUserCard && <CardViewBack cardData={cardData as UserListDataType} />}
     </div>
   );
 };

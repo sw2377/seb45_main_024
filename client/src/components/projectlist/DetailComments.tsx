@@ -7,14 +7,14 @@ import { ReactComponent as CheckSvg } from "../../assets/icons/check.svg";
 import Checkbox from "../../components/userlist,projectlist/Checkbox";
 import ActionButton from "../../components/userlist,projectlist/ActionButton";
 import Tooltip from "../../components/userlist,projectlist/Tooltip";
-import { getTokensFromLocalStorage } from "../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../utils/tokenStorage";
 
 import { addComment, editComment, removeComment } from "../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 import classes from "./DetailComments.module.css";
 
-import authInstance from "../../utility/authInstance";
+import authInstance from "../../utils/authInstance";
 
 interface AccessTokenType {
   id: number;
@@ -70,7 +70,7 @@ const DetailComments = () => {
         window.location.reload();
       })
       .catch(error => {
-        // console.warn("🚀 CREATE 실패", error, data);
+        console.warn("🚀 CREATE 실패", error, data);
       })
       .finally();
   };
@@ -89,8 +89,11 @@ const DetailComments = () => {
     const originComment = comments?.filter(
       comment => comment.replyId === targetId,
     );
-    // console.log("originComment", originComment[0].content);
-    setEditedComment(originComment[0].content);
+
+    if (originComment) {
+      // console.log("originComment", originComment[0].content);
+      setEditedComment(originComment[0].content);
+    }
 
     if (comments?.find(comment => comment.replyId === targetId)) {
       // console.log(targetId);
@@ -154,7 +157,7 @@ const DetailComments = () => {
           window.location.reload();
         })
         .catch(error => {
-          // console.warn("DELETE COMMENT ERROR", error, "targetId: ", targetId);
+          console.warn("DELETE COMMENT ERROR", error, "targetId: ", targetId);
           // setError("Something went wrong");
         });
       // .finally(() => setIsLoading(false));
@@ -174,9 +177,9 @@ const DetailComments = () => {
         alarmType: 0,
       });
       if (acceptType === 1) {
-        // console.log(targetId, "프로젝트 수락");
+        window.alert(`${targetUserName}님을 프로젝트 팀원으로 수락하였습니다.`);
       } else if (acceptType === 2) {
-        // console.log(targetId, "프로젝트 거절");
+        window.alert(`${targetUserName}님을 프로젝트 팀원으로 거절하였습니다.`);
       }
       window.location.reload();
     } catch (error) {
@@ -189,30 +192,26 @@ const DetailComments = () => {
     targetId: number,
     targetUserName: string,
   ) => {
+    // const acceptText = acceptType === 1 ? "수락" : "거절";
+
     if (
+      acceptType === 1 &&
       window.confirm(
         `${targetUserName}님을 프로젝트 팀원으로 수락하시겠습니까?`,
       )
     ) {
-      handleAcceptOrReject(1, targetId, targetUserName);
-    }
-  };
-
-  const handleRejectBtn = (
-    acceptType: number,
-    targetId: number,
-    targetUserName: string,
-  ) => {
-    if (
+      handleAcceptOrReject(acceptType, targetId, targetUserName);
+    } else if (
+      acceptType === 2 &&
       window.confirm(
         `${targetUserName}님을 프로젝트 팀원으로 거절하시겠습니까?`,
       )
     ) {
-      handleAcceptOrReject(2, targetId, targetUserName);
+      handleAcceptOrReject(acceptType, targetId, targetUserName);
     }
   };
 
-  const goToUserMyPage = writerId => {
+  const goToUserMyPage = (writerId: number) => {
     if (token) {
       navigate(`/mypage/${writerId}`);
     } else {
@@ -335,7 +334,7 @@ const DetailComments = () => {
                   <ActionButton
                     type="outline"
                     handleClick={() =>
-                      handleRejectBtn(
+                      handleAcceptBtn(
                         2,
                         comment.replyId,
                         comment.writerNickName,

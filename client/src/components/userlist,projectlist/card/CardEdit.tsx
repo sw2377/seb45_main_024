@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { UserListDataType } from "../../../model/boardTypes";
-import { getStringDate } from "../../../utility/formatDate";
+import { getStringDate } from "../../../utils/formatDate";
 import { useAppDispatch } from "../../../redux/hooks";
 import { getNewTitle } from "../../../redux/store";
-import { getTokensFromLocalStorage } from "../../../utility/tokenStorage";
+import { getTokensFromLocalStorage } from "../../../utils/tokenStorage";
 import GetLogo from "../../mypage/format/GetLogo";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -35,18 +35,24 @@ const CardEdit = ({ cardData }: CardEditProps) => {
 
   const dispatch = useAppDispatch();
   const techTagData = useAppSelector(state => state.techTags.data);
-  // console.log("techTagData", techTagData);
+  console.log("techTagData", techTagData);
 
   const { title, position, keywords, createdAt, techTagList } = cardData;
-  // console.log("✅ CARD DATA", cardData); // 생성일 경우 빈값이 든게 오고, 수정일 경우 origin 데이터가 든게 옴
+  console.log("CardEdit:: cardData", cardData);
+
+  useEffect(() => {
+    // console.log("✅ CARD DATA", cardData); // 생성일 경우 빈값이 든게 오고, 수정일 경우 origin 데이터가 든게 옴
+  }, []);
 
   useEffect(() => {
     // console.log("프로젝트에서 사용할 기술스택 변경");
   }, [techTagList]);
 
-  const [newTitle, setNewTitle] = useState("");
+  const [newTitle, setNewTitle] = useState(title);
   const date = getStringDate(createdAt);
   // const date = createdAt;
+
+  console.log("newTitle", newTitle);
 
   useEffect(() => {
     setNewTitle(title);
@@ -91,7 +97,11 @@ const CardEdit = ({ cardData }: CardEditProps) => {
           </div>
         </div>
         <div className={classes.centerArea}>
-          <div className={classes.title}>
+          <div
+            className={`${classes.title} ${
+              (newTitle === "" || newTitle === undefined) && classes.invalid
+            }`}
+          >
             <textarea
               // ref={titleRef}
               placeholder="제목을 입력해주세요."
@@ -103,10 +113,14 @@ const CardEdit = ({ cardData }: CardEditProps) => {
           </div>
         </div>
         <div className={classes.bottomArea}>
-          <div className={classes.position}>
+          <div
+            className={`${classes.position} ${
+              position === "포지션" && classes.invalid
+            }`}
+          >
             <input
               type="text"
-              placeholder="지원 포지션"
+              placeholder="포지션을 선택해 주세요."
               value={position === "포지션" ? "" : position}
               readOnly
             />
@@ -114,7 +128,7 @@ const CardEdit = ({ cardData }: CardEditProps) => {
 
           {selectedTechNames.length === 0 ? (
             <div className={`${classes.techTags} ${classes.invalid}`}>
-              프로젝트에서 사용할 기술 스택을 선택해 주세요!
+              기술 스택을 선택해 주세요.
             </div>
           ) : (
             <Swiper
@@ -144,6 +158,11 @@ const CardEdit = ({ cardData }: CardEditProps) => {
               keywords.length === 0 && classes.invalid
             }`}
           >
+            {keywords.length === 0 && (
+              <span className={classes.invalidText}>
+                하나 이상의 키워드를 추가해 주세요.
+              </span>
+            )}
             {keywords.map(item => (
               <span key={item}>&nbsp;#{item}</span>
             ))}
