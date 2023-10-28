@@ -1,7 +1,7 @@
 <br />
 
 <div  align="center">
-  <img width="100%" src="https://github.com/codestates-seb/seb45_main_024/assets/85465266/4031b821-ac2e-403f-aa74-e293b092703b" alt="smoothie">
+  <img width="100%" src="https://github.com/sw2377/smoothie/assets/85465266/f45c546e-b9bc-41e2-91c2-fdb1a5a09561" alt="smoothie">
 </div>
 
 <br />
