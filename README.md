@@ -17,10 +17,14 @@
 <br />
 
 ## 🫐 Team
+| 김동준<br>(FE, 부팀장) | 🙋🏻‍♀️ 백소원<br>(FE) | 최지우<br>(FE) |
+| :---: | :---: | :---: |
+| <p align="left">- 토큰 처리 및 회원 인증 권한 기능 구현 <br /> - API 콜 인스턴스 세팅 <br /> - 실시간 알람 폴링 기능 <br /> - Header, Footer 공통 컴포넌트 <br /> - 로그인 페이지 <br /> - 회원가입 페이지 <br /> - 비밀번호 찾기 페이지 </p> |<p align="left"> - Find Mate 게시판 CRUD <br /> - Find Mate 게시판 검색/정렬 <br /> - Find Team 게시판 CRUD <br /> - Find Team 게시판 검색/정렬 <br /> - Find Team 댓글 CRUD <br /> - AWS S3 배포 </p>|<p align="left">- 마이페이지: 프로필 CRUD 기능 <br /> - 마이페이지: 동료리뷰 CRUD 기능 <br /> - 마이페이지: 회원정보 UD 기능 <br /> - 기타 마이페이지 내부 기능 <br /> - 기술태그 컴포넌트 구현 <br /> - 유저플로우 다이어그램 작성</p> |
 
-| 김재희<br>(BE, 팀장) | 김지원<br>(BE) | 이호준<br>(BE) | 김동준<br>(FE, 부팀장) | 백소원<br>(FE) | 최지우<br>(FE) |
-| :---: | :---: | :---: | :---:| :---: | :---: |
-|<p align="left">- 로그인/회원가입 및 스프링 시큐리티 설정 <br /> - 비밀번호 재설정 구현 <br /> - 마이페이지: 프로필 CRUD 구현 <br /> - 마이페이지: 참여한 프로젝트  CRUD 구현 <br /> - S3 이용한 이미지 업로드 구현</p>|<p align="left">- Find Team 게시판 CRUD 구현 <br /> - Find Team 게시판 검색/정렬 기능 <br /> - 리뷰 등록 조회 구현</p>|<p align="left">- Find Mate 게시판 CRUD <br /> - Find Mate 게시판 검색/정렬 기능 <br /> - Find Mate 게시판 댓글 CRUD <br /> - 프로젝트 참여 로직 <br /> - 알람 로직 <br /> - 배포환경 구축(EC2/S3/RDS) </p>| <p align="left">- 토큰 처리 및 회원인증권한 기능 <br /> - API 콜 인스턴스 세팅 <br /> - 실시간 알람 폴링 기능 <br /> - Header 및 Footer 공통 컴포넌트 <br /> - 로그인 페이지 <br /> - 회원가입 페이지 <br /> - 비밀번호 찾기 페이지 </p> |<p align="left"> - Find Mate 게시판 CRUD <br /> - Find Mate 게시판 검색/정렬 <br /> - Find Team 게시판 CRUD <br /> - Find Team 게시판 검색/정렬 <br /> - Find Team 댓글 CRUD <br /> - AWS S3 배포 </p>|<p align="left">- 마이페이지: 프로필 CRUD 기능 <br /> - 마이페이지: 동료리뷰 CRUD 기능 <br /> - 마이페이지: 회원정보 UD 기능 <br /> - 기타 마이페이지 내부 기능 <br /> - 기술태그 컴포넌트 구현 <br /> - 유저플로우 다이어그램 작성</p> |
+| 김재희<br>(BE, 팀장) | 김지원<br>(BE) | 이호준<br>(BE) |
+| :---: | :---: | :---: |
+|<p align="left">- 로그인/회원가입 및 스프링 시큐리티 설정 <br /> - 비밀번호 재설정 구현 <br /> - 마이페이지: 프로필 CRUD 구현 <br /> - 마이페이지: 참여한 프로젝트 CRUD 구현 <br /> - S3 이용한 이미지 업로드 구현</p>|<p align="left">- Find Team 게시판 CRUD <br /> - Find Team 게시판 검색/정렬 <br /> - 리뷰 등록 조회 구현</p>|<p align="left">- Find Mate 게시판 CRUD <br /> - Find Mate 게시판 검색/정렬 기능 <br /> - Find Mate 게시판 댓글 CRUD <br /> - 프로젝트 참여 로직 <br /> - 알람 로직 <br /> - 배포환경 구축(EC2/S3/RDS) </p> |
+
 <br />
 
 ## 기술 스택
@@ -52,7 +56,7 @@
    <li><a href="https://docs.google.com/spreadsheets/d/11oZXEgOzu-R6nhaLl01fjNce4CbsjGaMBRuxBB7RGKw/edit#gid=0">사용자 요구사항 정의서</a></li>
    <li><a href="https://www.figma.com/file/3EE66zhd0hVBgfgqaFL4xf/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC-%EC%8A%A4%EB%AC%B4%EB%94%94-Main-Project-(%EC%BD%94%EB%93%9C%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%B8%A0-SEB)?type=design&node-id=19%3A62&mode=design&t=QosWAeIfoN5cmT6O-1">화면정의서 & </a>
    <a href="https://www.figma.com/file/3EE66zhd0hVBgfgqaFL4xf/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC-%EC%8A%A4%EB%AC%B4%EB%94%94-Main-Project-(%EC%BD%94%EB%93%9C%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%B8%A0-SEB)?type=design&node-id=0%3A1&mode=design&t=QosWAeIfoN5cmT6O-1">디자인</a></li>
-    <li><a href="https://file.notion.so/f/f/82d63a72-8254-4cde-bf1e-b2597b7c099c/9768d11d-298b-40a9-8ec0-441e39359eb0/Smoothie_%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3_%E1%84%86%E1%85%A2%E1%84%82%E1%85%B2%E1%84%8B%E1%85%A5%E1%86%AF.pdf?id=5c847c18-58f5-4960-a041-4ed6dad7db02&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1698278400000&signature=18bOfvD5LS8nfjb7MoUIMJuzFTRrOOInKrwQ-y3nT5Q&downloadName=Smoothie_%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3+%E1%84%86%E1%85%A2%E1%84%82%E1%85%B2%E1%84%8B%E1%85%A5%E1%86%AF.pdf">서비스 매뉴얼</a></li>
+    <li><a href="https://file.notion.so/f/f/82d63a72-8254-4cde-bf1e-b2597b7c099c/9768d11d-298b-40a9-8ec0-441e39359eb0/Smoothie_%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3_%E1%84%86%E1%85%A2%E1%84%82%E1%85%B2%E1%84%8B%E1%85%A5%E1%86%AF.pdf?id=5c847c18-58f5-4960-a041-4ed6dad7db02&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1698537600000&signature=ZeIKSxPkfpPpDiAgyFN9Cvg75Y2AKvsQvozmjTSgopg&downloadName=Smoothie_%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3+%E1%84%86%E1%85%A2%E1%84%82%E1%85%B2%E1%84%8B%E1%85%A5%E1%86%AF.pdf">서비스 매뉴얼</a></li>
    <li><a href="https://docs.google.com/spreadsheets/d/1GOaEIBmPLuDytZGS3cyxTeE1cZHsgaY0LF1-c6ik5sI/edit#gid=1278959919">API 명세서 & 테이블 명세서</a></li>
    <li><a href="https://docs.google.com/spreadsheets/d/1ltv6MbVLcmCWjtKZoECFAIhBSVRKoNTitnOJZyLqRGU/edit#gid=0">개발자 테스트 체크리스트 (3차 최종)</a></li>
 </ul>
