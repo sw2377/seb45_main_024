@@ -12,7 +12,7 @@
 - **`한줄 소개` :** 나와 잘 맞는 팀원을 만나기 위한 사이드 프로젝트 플랫폼, 스무디
 - **`팀원` :** 김재희(팀장), 김지원, 이호준, 김동준(부팀장), 백소원, 최지우
 - **`Wiki` :** <a href="https://github.com/codestates-seb/seb45_main_024/wiki" target="_blank">🔖 Wiki</a>
-- **`배포 링크` :** <a href="http://main-project-024-bucket.s3-website.ap-northeast-2.amazonaws.com/" target="_blank">🌐 SMOOTHIE</a> <br>(서버 배포가 중단되어 페이지가 원활하지 않을 수 있습니다. Pages & Features에서 gif 이미지를 확인할 수 있습니다.)
+- **`배포 링크` :** <a href="http://main-project-024-bucket.s3-website.ap-northeast-2.amazonaws.com/" target="_blank">🌐 SMOOTHIE</a> <br>(서버 배포가 중단되어 페이지가 원활하지 않을 수 있습니다. <a href="https://github.com/sw2377/smoothie/tree/main?tab=readme-ov-file#-pages--features">Pages & Features</a>에서 gif 이미지를 확인할 수 있습니다.)
 
 <br />
 
