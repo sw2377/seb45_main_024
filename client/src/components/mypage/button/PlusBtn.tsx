@@ -1,4 +1,4 @@
-import { FC, useState, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import classes from "./PlusBtn.module.css";
 import addicon from "../../../assets/icons/add.svg";
 
