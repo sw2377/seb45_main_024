@@ -10,8 +10,8 @@ if (
 
 const commonInstance = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000,
-  // timeout: 500, // 백엔드 서버 없다는 가정.
+  // timeout: 10000,
+  timeout: 500, // 백엔드 서버 없다는 가정.
 });
 
 // commonInstance.interceptors.response.use(config => {

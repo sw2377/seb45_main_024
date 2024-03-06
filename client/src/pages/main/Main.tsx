@@ -74,8 +74,10 @@ const Main: FC = () => {
             나와 잘 맞는 팀원과 함께하는 사이드 프로젝트, 스무디
           </p>
           <div className={classes.subTextDesc}>
-            <p>여러분의 시작으로 이끌어낸 결과를 통해 서로를 평가해 보세요.</p>
-            <p>스무디는 여러분의 발걸음에 힘을 보태면서 응원하고 있습니다.</p>
+            <p>Find Team 게시판을 통해 나의 프로필을 홍보해보세요!</p>
+            <p>
+              Find Mate 게시판을 통해 프로젝트를 함꼐할 팀원을 모집해보세요!
+            </p>
           </div>
         </div>
         <div className={classes.buttonArea}>
