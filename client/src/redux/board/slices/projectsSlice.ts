@@ -9,7 +9,7 @@ import {
 
 import { ProjectListDataType, PageInfo } from "../../../model/boardTypes";
 
-// import dummyData from "../../../dummy-data.json"; // 서버 안될시 TEST
+import dummyData from "../../../dummy-data.json";
 
 interface ProjectSliceType {
   data: ProjectListDataType[];
@@ -34,25 +34,27 @@ const projectsSlice = createSlice({
   extraReducers(builder) {
     // Fetch
     builder.addCase(fetchProjectList.pending, () => {
-      // throw new Error(); // 서버 안될시 TEST
+      throw new Error("서버와 연결이 되지 않습니다.");
     });
     builder.addCase(fetchProjectList.fulfilled, (state, action) => {
       state.data = action.payload.listData;
       state.pageInfo = action.payload.pageInfo;
     });
-    builder.addCase(fetchProjectList.rejected, () => {
-      // state.data = dummyData.memberboards.data; // 서버 안될시 TEST
+    builder.addCase(fetchProjectList.rejected, state => {
+      // dummy data 사용 test
+      state.data = dummyData.memberboards.data;
+      state.pageInfo = dummyData.memberboards.pageInfo;
     });
 
     // Get
     builder.addCase(getProject.pending, () => {
-      // throw new Error(); // 서버 안될시 TEST
+      throw new Error("서버와 연결이 되지 않습니다.");
     });
     builder.addCase(getProject.fulfilled, (state, action) => {
       state.currentData = action.payload;
     });
-    builder.addCase(getProject.rejected, () => {
-      // state.currentData = dummyData.memberboards.data[0]; // 서버 안될시 TEST
+    builder.addCase(getProject.rejected, state => {
+      state.currentData = dummyData.memberboards.data[0]; // dummy data
     });
 
     // Add

@@ -16,7 +16,7 @@ interface editCardParamsType {
 }
 
 interface QueryParamsType {
-  currentPage: string;
+  currentPage: string | null;
   currentSize: string;
   currentFilter: string;
   currentSearch: string;

@@ -48,8 +48,7 @@ const UserList = () => {
   const [query, setQuery] = useSearchParams();
 
   const currentSize = "8"; // 한 페이지 당 노출할 카드 갯수
-  const currentPage =
-    query.get("page") === null ? 1 : Number(query.get("page"));
+  const currentPage = query.get("page") === null ? "1" : query.get("page");
 
   // 포지션필터
   const currentFilter = positionSelect === "전체" ? "" : positionSelect;
@@ -81,24 +80,24 @@ const UserList = () => {
 
     dispatch(fetchUserCardList(queryParamsData))
       .unwrap()
-      .catch(error => {
-        console.warn("GET USERLIST ERROR", error);
-        setError("Something went wrong");
+      .catch(err => {
+        console.warn("🚀 GET USERLIST ERROR: ", err.message);
+        setError(err.message);
       })
       .finally(() => setIsLoading(false));
   };
 
-  const handleChangePage = (page: string) => {
-    query.set("page", page);
+  const handleChangePage = (page: number) => {
+    query.set("page", page.toString());
     setQuery(query);
   };
 
   // CardListContent 정의
-  let CardListContent;
+  let cardListContent;
 
   if (isLoading) {
     // 임시 Loading
-    CardListContent = (
+    cardListContent = (
       <div
         style={{
           display: "flex",
@@ -112,17 +111,20 @@ const UserList = () => {
       </div>
     );
   } else if (error) {
-    // CardListContent = <div>Error!</div>;
-    // Error시 임시 화면처리(Dummy Data)
-    CardListContent = (
-      <ul className={classes.cardListArea}>
-        {userCardData.map(card => (
-          <Card key={card.teamBoardId} type="USER_CARD" cardData={card} />
-        ))}
-      </ul>
-    ); // 서버 안될시 TEST
+    cardListContent = (
+      <>
+        <div className={classes.dummyDataLoad}>
+          {`[${error}] dummy data를 사용합니다.`}
+        </div>
+        <ul className={classes.cardListArea}>
+          {userCardData.map(card => (
+            <Card key={card.teamBoardId} type="USER_CARD" cardData={card} />
+          ))}
+        </ul>
+      </>
+    );
   } else {
-    CardListContent = (
+    cardListContent = (
       <ul className={classes.cardListArea}>
         {userCardData.map(card => (
           <Card key={card.teamBoardId} type="USER_CARD" cardData={card} />
@@ -157,12 +159,12 @@ const UserList = () => {
         </SearchInput>
       </div>
 
-      {CardListContent}
+      {cardListContent}
 
       <div className={classes.pagination}>
         <Pagination
-          currentPage={currentPage}
           totalCards={userCardPageInfo.totalElements}
+          currentPage={Number(currentPage)}
           onChangePage={handleChangePage}
         />
       </div>

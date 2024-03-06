@@ -19,13 +19,13 @@ interface editProjectParamsType {
 
 interface QueryParamsType {
   currentSort?: string;
-  currentPage: string;
+  currentPage: string | null;
   currentSize: string;
   currentFilter?: string;
   currentSearch?: string;
 }
 
-/** GET 모든 프로젝트 조회 */
+/** FETCH 모든 프로젝트 조회 */
 const fetchProjectList = createAsyncThunk(
   "projectlist/fetch",
   async ({

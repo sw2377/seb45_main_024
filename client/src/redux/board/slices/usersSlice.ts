@@ -9,7 +9,7 @@ import {
 
 import { UserListDataType, PageInfo } from "../../../model/boardTypes";
 
-import dummyData from "../../../dummy-data.json"; // 서버 안될시 TEST
+import dummyData from "../../../dummy-data.json";
 
 interface UserState {
   data: UserListDataType[];
@@ -39,14 +39,16 @@ const usersSlice = createSlice({
   extraReducers(builder) {
     // Fetch
     builder.addCase(fetchUserCardList.pending, () => {
-      // throw new Error(); // 서버 안될시 TEST
+      throw new Error("서버와 연결이 되지 않습니다.");
     });
     builder.addCase(fetchUserCardList.fulfilled, (state, action) => {
       state.data = action.payload.listData;
       state.pageInfo = action.payload.pageInfo;
     });
     builder.addCase(fetchUserCardList.rejected, state => {
-      state.data = dummyData.teamboards.data; // 서버 안될시 TEST
+      // dummy data 사용 test
+      state.data = dummyData.teamboards.data;
+      state.pageInfo = dummyData.teamboards.pageInfo;
     });
 
     // Get

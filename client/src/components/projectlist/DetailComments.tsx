@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as EditSvg } from "../../assets/icons/edit.svg";
 import { ReactComponent as DeleteSvg } from "../../assets/icons/delete.svg";
 import { ReactComponent as CheckSvg } from "../../assets/icons/check.svg";
+import defaultProfile from "../../assets/images/default_profile.svg";
 
 import Checkbox from "../../components/userlist,projectlist/Checkbox";
 import ActionButton from "../../components/userlist,projectlist/ActionButton";
@@ -260,7 +261,7 @@ const DetailComments = () => {
                 className={classes.userImage}
                 onClick={() => goToUserMyPage(comment.writerId)}
               >
-                <img src={comment.writerImageURL} alt="" />
+                <img src={comment.writerImageURL || defaultProfile} alt="" />
               </div>
               <div className={classes.usernameAndDate}>
                 <div className={classes.username}>{comment.writerNickName}</div>
