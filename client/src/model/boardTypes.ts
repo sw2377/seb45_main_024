@@ -26,7 +26,7 @@ export interface ProjectListDataType {
   writerNickName: string;
   writerImageURL: string;
   writerId: number;
-  replyList: ReplyDataType[];
+  replyList?: ReplyDataType[];
   techTagList: string[];
   startDate: string;
   endDate: string;
@@ -40,7 +40,7 @@ export interface ReplyDataType {
   writerImageURL: string;
   replyId: number;
   content: string;
-  acceptType: "NONE" | "ACCEPT" | "REFUSE";
+  acceptType: string | "NONE" | "ACCEPT" | "REFUSE";
   createAt: string;
   apply: boolean;
 }

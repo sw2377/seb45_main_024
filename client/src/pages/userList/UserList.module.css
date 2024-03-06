@@ -27,6 +27,13 @@
 
 }
 
+.dummyDataLoad {
+  text-align: center;
+  margin: 12px 0;
+  color: var(--color-state-error);
+  font-weight: bold;
+}
+
 @media screen and (max-width: 1023px) {
   .cardListArea {
     grid-template-columns: repeat(3, 1fr);

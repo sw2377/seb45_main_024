@@ -20,7 +20,7 @@ const authorInfoSlice = createSlice({
   name: "authorInfo",
   initialState,
   reducers: {
-    setAuthorInfo(state, action: PayloadAction<AuthorInfoState>) {
+    setAuthorInfo(_, action: PayloadAction<AuthorInfoState>) {
       return action.payload;
     },
   },

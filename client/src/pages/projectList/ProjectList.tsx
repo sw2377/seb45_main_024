@@ -21,7 +21,7 @@ const ProjectList = () => {
   const projectListData = useAppSelector(state => state.projects.data);
   const projectListPageInfo = useAppSelector(state => state.projects.pageInfo);
   // console.log("✅ PROJECT LIST", projectListData);
-  // console.log("✅ PAGE PAGE INFO", projectListPageInfo);
+  // console.log("✅ PAGE INFO", projectListPageInfo);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
@@ -87,7 +87,6 @@ const ProjectList = () => {
     currentFilter: currentFilter,
     currentSearch: currentSearch,
   };
-
   // console.log("✅ queryParamsData", queryParamsData);
 
   const getProjects = () => {
@@ -97,15 +96,15 @@ const ProjectList = () => {
 
     dispatch(fetchProjectList(queryParamsData))
       .unwrap()
-      .catch(error => {
-        console.warn("🚀 GET PROJECTLIST ERROR", error);
-        setError("Something went wrong");
+      .catch(err => {
+        console.warn("🚀 GET PROJECTLIST ERROR: ", err.message);
+        setError(err.message);
       })
       .finally(() => setIsLoading(false));
   };
 
-  const handleChangePage = page => {
-    query.set("page", page);
+  const handleChangePage = (page: number) => {
+    query.set("page", page.toString());
     setQuery(query);
   };
 
@@ -128,15 +127,22 @@ const ProjectList = () => {
       </div>
     );
   } else if (error) {
-    // ProjectListContent = <div>Error!</div>;
-    // Error시 임시 화면처리(Dummy Data)
     projectListContent = (
-      <ul className={classes.cardListArea}>
-        {projectListData.map(list => (
-          <Card key={list.memberBoardId} type="PROJECT_CARD" cardData={list} />
-        ))}
-      </ul>
-    ); // 서버 안될시 TEST
+      <>
+        <div className={classes.dummyDataLoad}>
+          {`[${error}] dummy data를 사용합니다.`}
+        </div>
+        <ul className={classes.cardListArea}>
+          {projectListData.map(list => (
+            <Card
+              key={list.memberBoardId}
+              type="PROJECT_CARD"
+              cardData={list}
+            />
+          ))}
+        </ul>
+      </>
+    );
   } else {
     projectListContent = (
       <ul className={classes.cardListArea}>
@@ -183,8 +189,8 @@ const ProjectList = () => {
 
       <div className={classes.pagination}>
         <Pagination
-          currentPage={currentPage}
           totalCards={projectListPageInfo.totalElements}
+          currentPage={Number(currentPage)}
           onChangePage={handleChangePage}
         />
       </div>

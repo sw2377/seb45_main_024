@@ -12,10 +12,7 @@ const Pagination = ({ totalCards, currentPage, onChangePage }: Props) => {
   const cardPerPage = 8; // 한 페이지 당 노출할 카드 갯수
   const totalPage = Math.ceil(totalCards / cardPerPage);
 
-  currentPage = +currentPage; // currentPage를 숫자로 타입 변환
-
-  const handlePageChange = page => {
-    // console.log("handlePageChange");
+  const handlePageChange = (page: number) => {
     onChangePage(page);
   };
 
@@ -30,7 +27,7 @@ const Pagination = ({ totalCards, currentPage, onChangePage }: Props) => {
       {[...Array(totalPage)].map((_, index) => (
         <button
           key={index}
-          className={index + 1 === currentPage ? `${classes.active}` : null}
+          className={index + 1 === currentPage ? `${classes.active}` : ""}
           onClick={() => handlePageChange(index + 1)}
         >
           {index + 1}
