@@ -63,12 +63,12 @@
 
 |Pages|Preview|
 |------------------|-----------------------------------------------------------|
-|**메인 페이지**|<img width="100%" alt="메인페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/main.gif" />|
-|**로그인 / 회원가입 페이지**|<img width="100%" alt="로그인,회원가입 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/account.gif" />|
-|**Find Mate <br /> 카드 리스트**|<img width="100%" alt="Find Mate 카드리스트 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findmate-cardlist.gif" />|
-|**Find Team <br /> 카드 작성**|<img width="100%" alt="Find Team 카드작성 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findteam-create.gif" />|
-|**Find Mate <br /> 댓글 알람**|<img width="100%" alt="Find Mate 댓글 알람 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/findmate-comment.gif" />|
-|**마이페이지**|<img width="100%" alt="마이페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie/main/readme-images/mypage.gif" />|
+|**메인 페이지**|<img width="100%" alt="메인페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/main.gif" />|
+|**로그인 / 회원가입 페이지**|<img width="100%" alt="로그인,회원가입 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/account.gif" />|
+|**Find Mate <br /> 카드 리스트**|<img width="100%" alt="Find Mate 카드리스트 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/findmate-cardlist.gif" />|
+|**Find Team <br /> 카드 작성**|<img width="100%" alt="Find Team 카드작성 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/findteam-create.gif" />|
+|**Find Mate <br /> 댓글 알람**|<img width="100%" alt="Find Mate 댓글 알람 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/findmate-comment.gif" />|
+|**마이페이지**|<img width="100%" alt="마이페이지 gif" src="https://raw.githubusercontent.com/sw2377/smoothie_original/main/readme-images/mypage.gif" />|
 
 <br />
 
